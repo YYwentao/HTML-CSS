@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言墙</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: blue;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+
+        .row span {
+            width: 70px;
+        }
+
+        button {
+            color: white;
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+            height: 40px;
+            background-color: deepskyblue;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .notice {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* 伪类选择器 */
+        button:active {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 版心，控制内容位置 -->
+    <div class="container">
+        <div class="row">
+            <h1>欢迎使用留言墙</h1>
+        </div>
+        <div class="row">
+            <span>昵称:</span>
+            <input type="text">
+        </div>
+        <div class="row">
+            <span>内容:</span>
+            <textarea id="text" cols="22" rows="5"></textarea>
+        </div>
+        <div class="row">
+            <button>提交</button>
+        </div>
+        <div id="notices">
+            <div class="notice">
+                星空物语: 这个是一个留言墙
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 实现留言动作
+        // 1.捕获提交按钮的的点击事件
+        let button = document.querySelector('button');
+        button.onclick = function () {
+            // 2.获取到输入框里面的内容
+            let input = document.querySelector('input');
+            let textarea = document.getElementById('text');
+            if (input.value == '' || textarea.value == '') {
+                return;
+            }
+            let span1 = input.value;
+            let span2 = textarea.value;
+            console.log(span1 + span2);
+            // 3.根据内容，创建出一个 div 对象 ，放到最下面的显示区里面
+            let div = document.createElement('div');
+            div.innerHTML = span1 + ": " + span2;
+            div.className = 'notice';
+            let notices = document.querySelector('#notices');
+            notices.appendChild(div);
+            // 4.最后清空原来输入框里面的内容
+            input.value = '';
+            textarea.value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div onclick="clickDiv()">hello</div> -->
+    <!-- <div>hello</div> -->
+
+    <!-- <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button> -->
+
+    <!-- <div>1</div>
+    <button onclick="add()">+1</button>
+    <button onclick="sub()">-1</button> -->
+
+    <!-- <a href="http://www.baidu.com">链接</a>
+    <button onclick="changeLink()">更改链接</button> -->
+
+    <!-- <img src="images/1.jpg" alt="" style="width: 300px;">
+    <button onclick="changeSrc()">更换显示</button> -->
+
+    <img src="images/1.jpg" alt="" style="width: 300px;">
+    <button onclick="bigging()">变大</button>
+    <button onclick="small()">变小</button>
+
+    <script>
+
+        function bigging() {
+            let img = document.querySelector('img');
+            let width = parseInt(img.style.width);
+            width += 50;
+            // 把更改的值设置回去，注意一定要带单位
+            img.style.width = width + 'px';
+        }
+        function small() {
+            let img = document.querySelector('img');
+            let width = parseInt(img.style.width);
+            width -= 50;
+            img.style.width = width + 'px';
+        }
+
+        // function changeSrc() {
+        //     let img = document.querySelector('img');
+        //     if (img.src.indexOf('images/2.jpg') >= 0) {
+        //         img.src = 'images/1.jpg';
+        //     } else {
+        //         img.src = "images/2 .jpg";
+        //     }
+
+        // }
+
+        // function changeLink() {
+        //     let a = document.querySelector('a');
+        //     a.href = "http://www.sougou.com ";
+        // }
+
+        //实现一个自增和自减的应用
+        // function add() {
+            //获取div里面的内容
+            // let d = document.querySelector('div');
+            //parseInt方法把内容转换成数字
+        //     let num = parseInt(d.innerHTML);
+        //     num += 1;
+        //     d.innerHTML = num;
+        //     console.log(d.innerHTML);
+        // }
+        // function sub() {
+        //     let d = document.querySelector('div');
+        //     let num = parseInt(d.innerHTML);
+        //     num -= 1;
+        //     d.innerHTML = num;
+        //     console.log(d.innerHTML);
+        // }
+
+        //回调函数
+        // function clickDiv() {
+        //     console.log('hahaha');
+        // }
+        // function clickButton() {
+        //     console.log('hehehe');
+        // }
+
+        // 使用querySelector只能获取一个标签的id
+        // let button = document.querySelector('button');
+        // button.onclick = clickButton;
+
+        // 使用querySelectorAll能获取相同标签类型
+        //let button1 = document.querySelectorAll('button');
+        // (第for循环遍历的三种写法)
+        // for (let i = 0; i < button1.length; i++) {
+        //     button1[i].onclick = clickButton;
+        // }
+        // for (let i of button1) {
+        //     i.onclick = clickButton;
+        // }
+        // for (let i in button1) {
+        //     button1[i].onclick = clickButton;
+        // }
+
+        //先获取页面上的 div 对象
+        //let divTag = document.querySelector('div');
+        //此时的代码 也不是立刻就调用 clickDiv ,而是把 clickDiv 这个函数赋值给了onclick属性
+        //还是由浏览器决定什么时候调用 (clickDiv仍然是一个回调函数)
+        //divTag.onclick = clickDiv;
+
+//DOM API 文档对象模型(上面演示)
+
+        //1.函数表达式可以被赋值，用一个变量接收，类型是function
+        // function fun() {
+        //     console.log('hello');
+        // }
+        // let a = fun;
+        // console.log(typeof (a));
+
+        //2.直接创建一个对象
+        // let people1 = {
+        //     name: '宣志',
+        //     sex: '男',
+        //     eat: function (food) {
+        //         console.log("傻儿子在吃" + food);
+        //     }
+        // };
+        // console.log(people1.name);
+        // people1.eat('肉');
+
+        //3.把people这个对象转换成 JSON(一种非常常见的数据交换格式) 的字符串
+        // let people = {
+        //     name: '宣志',
+        //     sex: '男',
+        // };
+        // let p1 = JSON.stringify(people);
+        // console.log(p1);
+        // console.log(typeof (p1)); 
+    </script>
+</body>
+
+</html>
