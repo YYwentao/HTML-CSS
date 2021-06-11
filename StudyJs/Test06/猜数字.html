@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #060;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            padding: 5px 0;
+        }
+
+        .row .left-span {
+            width: 100px;
+            text-align: center;
+        }
+
+        .row .right-span {
+            width: 100px;
+            text-align: center;
+        }
+
+        input {
+            height: 50px;
+            width: 150px;
+            font-size: 20px;
+            line-height: 50px;
+            text-indent: 10px;
+        }
+
+        #guessButton {
+            height: 50px;
+            width: 50px;
+        }
+
+        #resetButton {
+            height: 50px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>猜数字</h1>
+        <div class="row">
+            <input type="text">
+            <button id="guessButton">猜</button>
+        </div>
+        <div class="row">
+            <span class="left-span">
+                次数:
+            </span>
+            <span class="right-span" id="count">0</span>
+        </div>
+        <div class="row">
+            <span class="left-span">
+                提示:
+            </span>
+            <span class="right-span" id="result"></span>
+        </div>
+        <div class="row">
+            <button id="resetButton">重置</button>
+        </div>
+    </div>
+
+    <script>
+        //0.页面加载的时候获取一个随机数[0-100]
+        //Math.random [0,1) => [1,100]
+        //Math.floor 向下取整
+        let togGuess = Math.floor(Math.random() * 100) + 1;
+        console.log('toGuess' + togGuess);
+        //1，捕获 button 按钮的点击事件
+        let button = document.querySelector('#guessButton');
+        button.onclick = function () {
+            //2.获取 input 的内容
+            let input = document.querySelector('input');
+            if (input.value == '') {
+                return;
+            }
+            let num = parseInt(input.value);
+            //3.把 input 的值和随机数进行比较
+            if (num <= 1 || num >= -1) {
+                let message = '';
+                if (num > togGuess) {
+                    //高了
+                    message = '高了';
+                } else if (num < togGuess) {
+                    //低了
+                    message = '低了';
+                } else {
+                    //猜对了
+                    message = '恭喜你！猜对了';
+                    //4.如果猜对了，则禁止按钮和编辑框
+                    input.disabled = true;
+                    button.disabled = true;
+                }
+                //5.根据对比结果在页面上给出提示
+                let result = document.querySelector('#result');
+                result.innerHTML = message;
+
+                //6.每次猜都要更新一次次数
+                let count = document.querySelector('#count');
+                let countNum = parseInt(count.innerHTML) + 1;
+                count.innerHTML = countNum;
+            }
+        }
+
+        let resetButton = document.querySelector('#resetButton');
+        resetButton.onclick = function () {
+            // 控制页面刷新
+            location.reload();
+        }
+
+    </script>
+</body>
+
+</html>
